@@ -378,6 +378,22 @@ bool KisInputManager::eventFilterImpl(QEvent * event)
         }
     }
 
+    if (event->type() == QEvent::MouseButtonRelease ||
+        event->type() == QEvent::TabletRelease)
+    {
+        QPointer<KisToolProxy> toolProxy = d->toolProxy;
+        KisNodeWSP currentNode = canvas()->resourceManager()->resource(KoCanvasResource::CurrentKritaNode).value<KisNodeWSP>();
+        QString brushPreset = canvas()->resourceManager()->resource(KoCanvasResource::CurrentPaintOpPresetName).value<QString>();
+
+        //qWarning() << event->type();
+        KoToolManager *toolManager = KoToolManager::instance();
+        //KoToolBase *tool = toolManager->toolById(canvas(), toolManager->activeToolId());
+
+        qWarning() << "Layer index: " << currentNode->parent()->index(currentNode);
+        qWarning() << "Tool name: " << toolManager->activeToolId();
+        qWarning() << "Tool preset: " << brushPreset;
+    }
+
     switch (event->type()) {
     case QEvent::MouseButtonPress:
     case QEvent::MouseButtonDblClick: {
