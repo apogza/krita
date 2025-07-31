@@ -232,6 +232,12 @@ void KisToolProxy::setActiveTool(KoToolBase *tool)
     }
 }
 
+QString KisToolProxy::getActiveToolLabel()
+{
+    KoToolBase *activeTool = priv()->activeTool;
+    return QString(typeid(activeTool).name());
+}
+
 void KisToolProxy::activateToolAction(KisTool::ToolAction action)
 {
     KisTool *activeTool = dynamic_cast<KisTool*>(const_cast<KisToolProxy*>(this)->priv()->activeTool);

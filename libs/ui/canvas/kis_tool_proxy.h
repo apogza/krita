@@ -42,6 +42,7 @@ public:
     bool alternateActionSupportsHiResEvents(KisTool::AlternateAction action) const;
 
     void setActiveTool(KoToolBase *tool) override;
+    QString getActiveToolLabel();
 
     void activateToolAction(KisTool::ToolAction action);
     void deactivateToolAction(KisTool::ToolAction action);
