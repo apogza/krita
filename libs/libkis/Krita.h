@@ -32,6 +32,9 @@ public:
     explicit Krita(QObject *parent = 0);
     ~Krita() override;
 
+Q_SIGNALS:
+    void helloAgain(QString msg);
+
 public Q_SLOTS:
 
 
@@ -303,6 +306,14 @@ add_document_to_window()
      * @return a string representing the setting.
      */
     QString readSetting(const QString &group, const QString &name, const QString &defaultValue);
+
+    /**
+     * @brief sayHello
+     * @return Greeting
+     */
+    QString sayHello();
+
+
 
     /**
      * @brief icon

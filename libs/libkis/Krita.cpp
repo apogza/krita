@@ -377,6 +377,12 @@ QString Krita::readSetting(const QString &group, const QString &name, const QStr
     return grp.readEntry(name, defaultValue);
 }
 
+QString Krita::sayHello()
+{
+    emit helloAgain("Blah");
+    return "Hello!";
+}
+
 QIcon Krita::icon(QString &iconName) const
 {
     return KisIconUtils::loadIcon(iconName);
